@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  recoverbench:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./runs:/app/runs
+      - ./examples:/app/examples
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434/v1
+      - OPENAI_BASE_URL=${OPENAI_BASE_URL:-}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+    command: ["smoke"]
+    depends_on:
+      - ollama
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_models:/root/.ollama
+
+volumes:
+  ollama_models:

@@ -1,0 +1,17 @@
+# RecoverBench v1.0.1 Erratum Frozen TEST Set SHA-256 Checksums
+# Freeze Timestamp: 2026-09-22T09:45:00Z
+# Erratum: RB-STOR-005 off-by-one string length corrected (20 -> 19)
+# Composite Hash: 42ad17acaf97fcd480b8b152f8fbbc4df98acc54dfadd686c425b826dd69e0d8
+
+1bc71266b986127786de26cff54efac0bc1f788aa24b8485b332c5902d224f9b  recoverbench/tasks/test/rb_cloud_004.py
+e9543370e8b6265d3b2f11e5507c95a18df89abdd15eceaa8610db493ffd6e2e  recoverbench/tasks/test/rb_crm_004.py
+87ca914fe1ad57930fd21b1e3c5826139e0ee28845de9e41fa0e70150321352d  recoverbench/tasks/test/rb_db_004.py
+8879b20c712961e9c7cbe53b13ddf216f72df61b11ca0a60625623c57c11b1ba  recoverbench/tasks/test/rb_db_005.py
+a6effe669f45f2b808c0278219f70f292de503c2a6bda9025330a59ef3b11237  recoverbench/tasks/test/rb_git_004.py
+e2816fb5f7dc78457f367ecdd061873b40cb6f1ab986952c2e8169e8fd25e1cc  recoverbench/tasks/test/rb_msg_004.py
+3cfa6e15520067483bf9e26c72c23283bee9036a2eb4aac14f139895de1565c0  recoverbench/tasks/test/rb_msg_005.py
+3e8b86a1b930307ea25d4bcdc9729bdd4251049c63705e4637471c24d1d9dd05  recoverbench/tasks/test/rb_pay_004.py
+ecf9e49692cf8b4fb40de11347cfb7d929899e4e8fb1b2dd9ae56341bf53440a  recoverbench/tasks/test/rb_pay_005.py
+1738e30c964400bf65134598c291fd5796ebed03cb387c432c37b02430d5a67b  recoverbench/tasks/test/rb_stor_004.py
+7ca2365ad9a9c90c6a19c79f5effe71a1d2e10d77fceded9b9c181d40a589f38  recoverbench/tasks/test/rb_stor_005.py
+643fb97f945b94ebfa339be13e064128868d9906cecef259aead45d3a1db83fb  recoverbench/tasks/test/rb_tick_004.py

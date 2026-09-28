@@ -1,0 +1,8 @@
+You are assigned the following task:
+
+Task ID: {task_id}
+Objective: {objective}
+
+Constraints:
+- Use only the provided tools to interact with external systems.
+- Stop when the task is complete.

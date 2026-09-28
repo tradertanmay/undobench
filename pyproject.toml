@@ -1,0 +1,109 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "recoverbench"
+version = "1.0.0"
+description = "RecoverBench: Benchmark & SDK for AI Agent Fault Tolerance Around External Side Effects"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "RecoverBench Authors", email = "research@recoverbench.org" }
+]
+keywords = [
+    "ai-agents",
+    "fault-tolerance",
+    "benchmarking",
+    "tool-calling",
+    "distributed-systems",
+    "idempotency",
+    "sagas",
+    "recovery",
+    "reliability"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Testing",
+]
+dependencies = [
+    "pydantic>=2.0",
+]
+
+[project.optional-dependencies]
+openai = [
+    "openai>=1.0.0"
+]
+langgraph = [
+    "langgraph>=0.1.0",
+    "langchain-core>=0.2.0"
+]
+all = [
+    "openai>=1.0.0",
+    "langgraph>=0.1.0",
+    "langchain-core>=0.2.0",
+    "pytest>=7.0.0",
+]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "build>=1.0.0",
+    "wheel>=0.40.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/tradertanmay/recoverbench"
+Documentation = "https://github.com/tradertanmay/recoverbench/tree/main/docs"
+Repository = "https://github.com/tradertanmay/recoverbench.git"
+Issues = "https://github.com/tradertanmay/recoverbench/issues"
+
+[project.scripts]
+recoverbench = "recoverbench.cli:main"
+
+[tool.setuptools]
+packages = [
+    "recoverbench",
+    "recoverbench.agents",
+    "recoverbench.data",
+    "recoverbench.domains",
+    "recoverbench.domains.cloud",
+    "recoverbench.domains.crm",
+    "recoverbench.domains.database",
+    "recoverbench.domains.git",
+    "recoverbench.domains.messaging",
+    "recoverbench.domains.payments",
+    "recoverbench.domains.storage",
+    "recoverbench.domains.ticketing",
+    "recoverbench.faults",
+    "recoverbench.harness",
+    "recoverbench.metrics",
+    "recoverbench.oracle",
+    "recoverbench.recovery_methods",
+    "recoverbench.runner",
+    "recoverbench.schemas",
+    "recoverbench.tasks",
+    "recoverbench.tasks.dev",
+    "recoverbench.tasks.validation",
+    "recoverbench.tasks.test",
+]
+
+[tool.setuptools.package-data]
+recoverbench = [
+    "data/*",
+    "tasks/manifest.json",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

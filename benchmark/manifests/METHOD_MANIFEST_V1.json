@@ -1,0 +1,64 @@
+{
+  "benchmark_version": "1.0.0",
+  "freeze_name": "RecoverBench-V1-Recovery-Methods-Freeze",
+  "freeze_date": "2026-09-22T09:00:00Z",
+  "total_methods": 6,
+  "methods": [
+    {
+      "code": "B0",
+      "method_id": "naive_retry:v1",
+      "implementation_class": "NaiveRetryMethod",
+      "file_path": "recoverbench/recovery_methods/naive_retry.py",
+      "sha256": "bc08115520f8786afbafa20fd17035b07c5e1980ccdbb2b81447969182284409",
+      "description": "Blind retry on failure without state inspection or idempotency",
+      "dependencies": {}
+    },
+    {
+      "code": "B1",
+      "method_id": "checkpoint:v1",
+      "implementation_class": "CheckpointResumeMethod",
+      "file_path": "recoverbench/recovery_methods/checkpoint.py",
+      "sha256": "47d638ae7f7308dabdf9b4a206afbaf14efdf6ebe2240f601e878fa784197689",
+      "description": "Local state rollback and replay from previous checkpoint",
+      "dependencies": {}
+    },
+    {
+      "code": "B2",
+      "method_id": "idempotency:v1",
+      "implementation_class": "IdempotencyKeyMethod",
+      "file_path": "recoverbench/recovery_methods/idempotency.py",
+      "sha256": "4f69a5c835f76ca18af6f6761cd48383c1c44d0d52b48a2e121f92aa92217fa3",
+      "description": "Deterministic idempotency key propagation across external calls",
+      "dependencies": {}
+    },
+    {
+      "code": "B3",
+      "method_id": "saga:v1",
+      "implementation_class": "SagaRecoveryMethod",
+      "file_path": "recoverbench/recovery_methods/saga.py",
+      "sha256": "979c0966087cf6d5ce47c7d2eb95711f8768c63f7a8447118b510709cfd03880",
+      "description": "Compensating transactions with backward rollback upon unhandled failure",
+      "dependencies": {}
+    },
+    {
+      "code": "B4",
+      "method_id": "langgraph_native:v1",
+      "implementation_class": "LangGraphNativeMethod",
+      "file_path": "recoverbench/recovery_methods/langgraph_native.py",
+      "sha256": "f21525c42c7b12c5483808a5c14428a3c0121391e9681f64cefe0b05faf3556a",
+      "description": "Production LangGraph 1.2.11 StateGraph with MemorySaver and RetryPolicy",
+      "dependencies": {
+        "langgraph": "1.2.11"
+      }
+    },
+    {
+      "code": "B5",
+      "method_id": "evoundo:rb1",
+      "implementation_class": "EvoUndoAdapter",
+      "file_path": "recoverbench/recovery_methods/evoundo_adapter.py",
+      "sha256": "699b0b9921259626a9d9976f7baf63e3ba59df2072892bd2ee784e8e396cca7a",
+      "description": "State reconciliation under zero-privilege external mutation model",
+      "dependencies": {}
+    }
+  ]
+}

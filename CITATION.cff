@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use RecoverBench in your research, please cite it as below."
+title: "RecoverBench: Separating Task Competence from Recovery Capability in Tool-Using AI Agents"
+version: 1.0.1
+date-released: 2026-09-25
+url: "https://github.com/tradertanmay/recoverbench"
+authors:
+  - name: "The RecoverBench Team"
+preferred-citation:
+  type: article
+  title: "RecoverBench: Separating Task Competence from Recovery Capability in Tool-Using AI Agents"
+  authors:
+    - name: "RecoverBench Authors"
+  year: 2026
+  notes: "Conference Submission / Preprint"

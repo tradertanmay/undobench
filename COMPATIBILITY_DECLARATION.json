@@ -1,0 +1,13 @@
+{
+  "sdk_version": "1.0.0",
+  "benchmark_version": "1.0.1",
+  "trajectory_schema": "1",
+  "submission_schema": "1",
+  "agent_protocol": "1",
+  "supported_python": ">=3.10",
+  "supported_platforms": ["Darwin", "Linux"],
+  "deprecation_policy": {
+    "schema_changes": "Semantic Versioning: Breaking changes increment major schema version; backwards-compatible readers maintained for at least 1 minor release cycle.",
+    "migration_path": "recoverbench evaluate automatically accepts legacy RB-3 traces as well as Trajectory Schema V1."
+  }
+}

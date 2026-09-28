@@ -1,0 +1,415 @@
+{
+  "benchmark_version": "1.0.0",
+  "freeze_name": "RecoverBench-V1-Frozen-TEST",
+  "freeze_date": "2026-09-22T09:00:00Z",
+  "total_test_tasks": 12,
+  "composite_test_set_sha256": "1ea69de72b7f238b9dde65138212d43cacf617266005a4f81187352090325963",
+  "quarantine_policy": "STRICT_QUARANTINE_DEVELOPMENT_PROTECTED",
+  "anti_contamination_rule": "Zero test trials permitted during prompt, method, or oracle development",
+  "tasks": [
+    {
+      "task_id": "RB-CLOUD-004",
+      "name": "Blue-Green Service Deployment Cutover",
+      "domain": "cloud",
+      "file_path": "recoverbench/tasks/test/rb_cloud_004.py",
+      "sha256": "1bc71266b986127786de26cff54efac0bc1f788aa24b8485b332c5902d224f9b",
+      "complexity": "C3",
+      "observability": "KNOWN_EXECUTED",
+      "reversibility": "COMPENSATABLE",
+      "idempotency_support": false,
+      "concurrency_present": false,
+      "cross_system_transaction": false,
+      "primary_fault_boundary": "NO_FAULT",
+      "primary_perturbation": "NONE",
+      "required_effects": [
+        {
+          "target": "cloud.deployment.billing-api-green",
+          "op_type": "CREATE",
+          "expected_value": null,
+          "max_occurrences": 1,
+          "reversibility": "REVERSIBLE",
+          "description": "Deploy green service environment"
+        },
+        {
+          "target": "cloud.routing.billing-api.active",
+          "op_type": "UPDATE",
+          "expected_value": null,
+          "max_occurrences": 1,
+          "reversibility": "REVERSIBLE",
+          "description": "Switch active ingress route to green"
+        }
+      ],
+      "forbidden_effects": [],
+      "invariants": []
+    },
+    {
+      "task_id": "RB-CRM-004",
+      "name": "Enterprise SLA Tier Renewal",
+      "domain": "crm",
+      "file_path": "recoverbench/tasks/test/rb_crm_004.py",
+      "sha256": "e9543370e8b6265d3b2f11e5507c95a18df89abdd15eceaa8610db493ffd6e2e",
+      "complexity": "C1",
+      "observability": "KNOWN_EXECUTED",
+      "reversibility": "COMPENSATABLE",
+      "idempotency_support": false,
+      "concurrency_present": false,
+      "cross_system_transaction": false,
+      "primary_fault_boundary": "NO_FAULT",
+      "primary_perturbation": "NONE",
+      "required_effects": [
+        {
+          "target": "crm.account.acct_ent_500.sla",
+          "op_type": "UPDATE",
+          "expected_value": null,
+          "max_occurrences": 1,
+          "reversibility": "REVERSIBLE",
+          "description": "Renew enterprise SLA tier to ENTERPRISE_PLATINUM"
+        }
+      ],
+      "forbidden_effects": [],
+      "invariants": []
+    },
+    {
+      "task_id": "RB-DB-004",
+      "name": "Schema Migration with Batch Audit Log",
+      "domain": "database",
+      "file_path": "recoverbench/tasks/test/rb_db_004.py",
+      "sha256": "87ca914fe1ad57930fd21b1e3c5826139e0ee28845de9e41fa0e70150321352d",
+      "complexity": "C2",
+      "observability": "KNOWN_EXECUTED",
+      "reversibility": "COMPENSATABLE",
+      "idempotency_support": false,
+      "concurrency_present": false,
+      "cross_system_transaction": false,
+      "primary_fault_boundary": "NO_FAULT",
+      "primary_perturbation": "NONE",
+      "required_effects": [
+        {
+          "target": "database.schema.migration_v2",
+          "op_type": "CREATE",
+          "expected_value": null,
+          "max_occurrences": 1,
+          "reversibility": "REVERSIBLE",
+          "description": "Apply schema migration version 2"
+        },
+        {
+          "target": "database.audit.migration_v2",
+          "op_type": "CREATE",
+          "expected_value": null,
+          "max_occurrences": 1,
+          "reversibility": "REVERSIBLE",
+          "description": "Write audit record for migration"
+        }
+      ],
+      "forbidden_effects": [
+        {
+          "target": "database.schema.migration_v2",
+          "op_type": null,
+          "forbidden_value": null,
+          "reason": "Duplicate schema migration execution due to blind retry"
+        }
+      ],
+      "invariants": []
+    },
+    {
+      "task_id": "RB-DB-005",
+      "name": "Read-Modify-Write Bank Dividend Allocation",
+      "domain": "database",
+      "file_path": "recoverbench/tasks/test/rb_db_005.py",
+      "sha256": "8879b20c712961e9c7cbe53b13ddf216f72df61b11ca0a60625623c57c11b1ba",
+      "complexity": "C1",
+      "observability": "KNOWN_EXECUTED",
+      "reversibility": "COMPENSATABLE",
+      "idempotency_support": false,
+      "concurrency_present": false,
+      "cross_system_transaction": false,
+      "primary_fault_boundary": "NO_FAULT",
+      "primary_perturbation": "NONE",
+      "required_effects": [
+        {
+          "target": "database.accounts.acc_dividend_1.dividend",
+          "op_type": "UPDATE",
+          "expected_value": null,
+          "max_occurrences": 1,
+          "reversibility": "REVERSIBLE",
+          "description": "Allocate exactly one dividend payment of $2,500.00"
+        }
+      ],
+      "forbidden_effects": [
+        {
+          "target": "database.accounts.acc_dividend_1.dividend",
+          "op_type": null,
+          "forbidden_value": null,
+          "reason": "Double allocation of dividend resulting in financial loss"
+        }
+      ],
+      "invariants": []
+    },
+    {
+      "task_id": "RB-GIT-004",
+      "name": "Release Tag Cut and Cherry-Pick",
+      "domain": "git",
+      "file_path": "recoverbench/tasks/test/rb_git_004.py",
+      "sha256": "a6effe669f45f2b808c0278219f70f292de503c2a6bda9025330a59ef3b11237",
+      "complexity": "C1",
+      "observability": "KNOWN_EXECUTED",
+      "reversibility": "REVERSIBLE",
+      "idempotency_support": false,
+      "concurrency_present": false,
+      "cross_system_transaction": false,
+      "primary_fault_boundary": "NO_FAULT",
+      "primary_perturbation": "NONE",
+      "required_effects": [
+        {
+          "target": "git.repository.tag.v2.0.0",
+          "op_type": "CREATE",
+          "expected_value": null,
+          "max_occurrences": 1,
+          "reversibility": "REVERSIBLE",
+          "description": "Create release tag v2.0.0"
+        }
+      ],
+      "forbidden_effects": [],
+      "invariants": [
+        {
+          "name": "git_cleanliness",
+          "description": "Working tree must remain clean",
+          "expression": "git_cleanliness"
+        }
+      ]
+    },
+    {
+      "task_id": "RB-MSG-004",
+      "name": "High-Urgency Pager Callout with Delivery ACK",
+      "domain": "messaging",
+      "file_path": "recoverbench/tasks/test/rb_msg_004.py",
+      "sha256": "e2816fb5f7dc78457f367ecdd061873b40cb6f1ab986952c2e8169e8fd25e1cc",
+      "complexity": "C1",
+      "observability": "KNOWN_EXECUTED",
+      "reversibility": "IRREVERSIBLE",
+      "idempotency_support": false,
+      "concurrency_present": false,
+      "cross_system_transaction": false,
+      "primary_fault_boundary": "NO_FAULT",
+      "primary_perturbation": "NONE",
+      "required_effects": [
+        {
+          "target": "messaging.pager.dispatch.payments-core",
+          "op_type": "CREATE",
+          "expected_value": null,
+          "max_occurrences": 1,
+          "reversibility": "REVERSIBLE",
+          "description": "Dispatch exactly one P1 on-call page"
+        }
+      ],
+      "forbidden_effects": [
+        {
+          "target": "messaging.pager.dispatch.payments-core",
+          "op_type": null,
+          "forbidden_value": null,
+          "reason": "Spamming duplicate on-call engineer phone pages"
+        }
+      ],
+      "invariants": []
+    },
+    {
+      "task_id": "RB-MSG-005",
+      "name": "Webhook Fanout with Delivery Confirmation",
+      "domain": "messaging",
+      "file_path": "recoverbench/tasks/test/rb_msg_005.py",
+      "sha256": "3cfa6e15520067483bf9e26c72c23283bee9036a2eb4aac14f139895de1565c0",
+      "complexity": "C1",
+      "observability": "KNOWN_EXECUTED",
+      "reversibility": "IRREVERSIBLE",
+      "idempotency_support": false,
+      "concurrency_present": false,
+      "cross_system_transaction": false,
+      "primary_fault_boundary": "NO_FAULT",
+      "primary_perturbation": "NONE",
+      "required_effects": [
+        {
+          "target": "messaging.webhook.fanout.partner_gateway",
+          "op_type": "CREATE",
+          "expected_value": null,
+          "max_occurrences": 1,
+          "reversibility": "REVERSIBLE",
+          "description": "Post webhook transaction payload to partner endpoint"
+        }
+      ],
+      "forbidden_effects": [
+        {
+          "target": "messaging.webhook.fanout.partner_gateway",
+          "op_type": null,
+          "forbidden_value": null,
+          "reason": "Duplicate webhook delivery to partner system causing replay bugs"
+        }
+      ],
+      "invariants": []
+    },
+    {
+      "task_id": "RB-PAY-004",
+      "name": "Subscription Renewal with Grace Period",
+      "domain": "payments",
+      "file_path": "recoverbench/tasks/test/rb_pay_004.py",
+      "sha256": "3e8b86a1b930307ea25d4bcdc9729bdd4251049c63705e4637471c24d1d9dd05",
+      "complexity": "C1",
+      "observability": "KNOWN_EXECUTED",
+      "reversibility": "COMPENSATABLE",
+      "idempotency_support": false,
+      "concurrency_present": false,
+      "cross_system_transaction": false,
+      "primary_fault_boundary": "NO_FAULT",
+      "primary_perturbation": "NONE",
+      "required_effects": [
+        {
+          "target": "payments.subscription.sub_annual_99",
+          "op_type": "CREATE",
+          "expected_value": null,
+          "max_occurrences": 1,
+          "reversibility": "REVERSIBLE",
+          "description": "Process exactly one subscription renewal charge"
+        }
+      ],
+      "forbidden_effects": [
+        {
+          "target": "payments.subscription.sub_annual_99",
+          "op_type": null,
+          "forbidden_value": null,
+          "reason": "Double recurring subscription billing to customer card"
+        }
+      ],
+      "invariants": []
+    },
+    {
+      "task_id": "RB-PAY-005",
+      "name": "Multi-Currency Cross-Border Wire Transfer",
+      "domain": "payments",
+      "file_path": "recoverbench/tasks/test/rb_pay_005.py",
+      "sha256": "ecf9e49692cf8b4fb40de11347cfb7d929899e4e8fb1b2dd9ae56341bf53440a",
+      "complexity": "C2",
+      "observability": "KNOWN_EXECUTED",
+      "reversibility": "COMPENSATABLE",
+      "idempotency_support": false,
+      "concurrency_present": false,
+      "cross_system_transaction": false,
+      "primary_fault_boundary": "NO_FAULT",
+      "primary_perturbation": "NONE",
+      "required_effects": [
+        {
+          "target": "payments.wire.fx_wire_4401",
+          "op_type": "CREATE",
+          "expected_value": null,
+          "max_occurrences": 1,
+          "reversibility": "REVERSIBLE",
+          "description": "Execute exactly one cross-border wire transfer"
+        }
+      ],
+      "forbidden_effects": [
+        {
+          "target": "payments.wire.fx_wire_4401",
+          "op_type": null,
+          "forbidden_value": null,
+          "reason": "Duplicate international wire dispatched ($5,000 FX loss)"
+        }
+      ],
+      "invariants": []
+    },
+    {
+      "task_id": "RB-STOR-004",
+      "name": "Cross-Bucket Object Replication",
+      "domain": "storage",
+      "file_path": "recoverbench/tasks/test/rb_stor_004.py",
+      "sha256": "1738e30c964400bf65134598c291fd5796ebed03cb387c432c37b02430d5a67b",
+      "complexity": "C2",
+      "observability": "KNOWN_EXECUTED",
+      "reversibility": "COMPENSATABLE",
+      "idempotency_support": false,
+      "concurrency_present": false,
+      "cross_system_transaction": false,
+      "primary_fault_boundary": "NO_FAULT",
+      "primary_perturbation": "NONE",
+      "required_effects": [
+        {
+          "target": "storage.eu-west-replica.dataset_v3.bin",
+          "op_type": "CREATE",
+          "expected_value": null,
+          "max_occurrences": 1,
+          "reversibility": "REVERSIBLE",
+          "description": "Replicate dataset into eu-west-replica bucket"
+        }
+      ],
+      "forbidden_effects": [],
+      "invariants": []
+    },
+    {
+      "task_id": "RB-STOR-005",
+      "name": "Atomic Object Swap with Cleanup",
+      "domain": "storage",
+      "file_path": "recoverbench/tasks/test/rb_stor_005.py",
+      "sha256": "806b03a563359d9ae5833eabe3fb3fa5c9f2a4723ff02e2784b351f28f65d3f8",
+      "complexity": "C3",
+      "observability": "KNOWN_EXECUTED",
+      "reversibility": "COMPENSATABLE",
+      "idempotency_support": false,
+      "concurrency_present": false,
+      "cross_system_transaction": false,
+      "primary_fault_boundary": "NO_FAULT",
+      "primary_perturbation": "NONE",
+      "required_effects": [
+        {
+          "target": "storage.configs-bucket.active_flags.json",
+          "op_type": "UPDATE",
+          "expected_value": null,
+          "max_occurrences": 1,
+          "reversibility": "REVERSIBLE",
+          "description": "Update feature flag object to true"
+        },
+        {
+          "target": "storage.configs-bucket.active_flags.json.bak",
+          "op_type": "DELETE",
+          "expected_value": null,
+          "max_occurrences": 1,
+          "reversibility": "REVERSIBLE",
+          "description": "Delete temporary backup object"
+        }
+      ],
+      "forbidden_effects": [],
+      "invariants": []
+    },
+    {
+      "task_id": "RB-TICK-004",
+      "name": "SLA Breach Re-routing and Executive Escalation",
+      "domain": "ticketing",
+      "file_path": "recoverbench/tasks/test/rb_tick_004.py",
+      "sha256": "643fb97f945b94ebfa339be13e064128868d9906cecef259aead45d3a1db83fb",
+      "complexity": "C2",
+      "observability": "KNOWN_EXECUTED",
+      "reversibility": "COMPENSATABLE",
+      "idempotency_support": false,
+      "concurrency_present": false,
+      "cross_system_transaction": false,
+      "primary_fault_boundary": "NO_FAULT",
+      "primary_perturbation": "NONE",
+      "required_effects": [
+        {
+          "target": "ticketing.incident.INC-3301.sla",
+          "op_type": "UPDATE",
+          "expected_value": null,
+          "max_occurrences": 1,
+          "reversibility": "REVERSIBLE",
+          "description": "Escalate incident SLA tier to CRITICAL_15MIN"
+        },
+        {
+          "target": "ticketing.incident.INC-3301.team",
+          "op_type": "UPDATE",
+          "expected_value": null,
+          "max_occurrences": 1,
+          "reversibility": "REVERSIBLE",
+          "description": "Re-route ticket to team iam-escalations"
+        }
+      ],
+      "forbidden_effects": [],
+      "invariants": []
+    }
+  ]
+}
