@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RecoverBench Trajectory Schema V1",
+  "description": "Standardized canonical schema for individual agent execution trajectories under RecoverBench.",
+  "type": "object",
+  "required": [
+    "run_id",
+    "benchmark_version",
+    "task_id",
+    "split",
+    "condition",
+    "agent_name",
+    "final_status",
+    "messages",
+    "tool_calls"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "description": "Unique run or trial identifier."
+    },
+    "benchmark_version": {
+      "type": "string",
+      "description": "Benchmark version (e.g. 1.0.1)."
+    },
+    "pair_id": {
+      "type": "string",
+      "description": "Optional paired trial identifier linking control and fault runs."
+    },
+    "task_id": {
+      "type": "string",
+      "description": "RecoverBench task identifier (e.g. RB-PAY-004)."
+    },
+    "split": {
+      "type": "string",
+      "enum": ["dev", "validation", "test"],
+      "description": "Task split."
+    },
+    "domain": {
+      "type": "string",
+      "description": "Task domain (payments, database, git, cloud, etc.)."
+    },
+    "condition": {
+      "type": "string",
+      "enum": ["CONTROL", "FAULT"],
+      "description": "Execution condition: failure-free CONTROL or injected FAULT."
+    },
+    "agent_name": {
+      "type": "string",
+      "description": "Name or identifier of the evaluated agent."
+    },
+    "agent_version": {
+      "type": "string",
+      "description": "Version of the agent."
+    },
+    "model_name": {
+      "type": "string",
+      "description": "Underlying foundation model name."
+    },
+    "model_digest": {
+      "type": "string",
+      "description": "Cryptographic digest of model weights/manifest if available."
+    },
+    "framework": {
+      "type": "string",
+      "description": "Execution framework or adapter used."
+    },
+    "recovery_method": {
+      "type": "string",
+      "description": "Recovery substrate applied (or none if handled natively by agent)."
+    },
+    "seed": {
+      "type": ["integer", "null"],
+      "description": "Random seed used for sampling and perturbations."
+    },
+    "messages": {
+      "type": "array",
+      "description": "Conversation message history visible to the agent.",
+      "items": {
+        "type": "object"
+      }
+    },
+    "tool_calls": {
+      "type": "array",
+      "description": "Chronological list of tool invocations dispatched by the agent.",
+      "items": {
+        "type": "object"
+      }
+    },
+    "tool_results": {
+      "type": "array",
+      "description": "Chronological list of outputs or errors received from tools.",
+      "items": {
+        "type": "object"
+      }
+    },
+    "latency_ms": {
+      "type": "number",
+      "description": "Total execution wall-clock time in milliseconds."
+    },
+    "token_usage": {
+      "type": "object",
+      "properties": {
+        "prompt_tokens": { "type": "integer" },
+        "completion_tokens": { "type": "integer" },
+        "total_tokens": { "type": "integer" }
+      }
+    },
+    "fault_visible_observations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Explicit fault observations seen by the agent (e.g. connection timeout)."
+    },
+    "final_status": {
+      "type": "string",
+      "enum": ["SUCCESS", "FAILED"],
+      "description": "Agent-declared completion status."
+    },
+    "benchmark_hidden_trace": {
+      "type": "object",
+      "description": "Evaluator-private trace containing ground-truth effect logs and oracle verdicts."
+    }
+  },
+  "additionalProperties": true
+}

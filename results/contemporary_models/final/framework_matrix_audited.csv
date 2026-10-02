@@ -1,0 +1,3 @@
+framework_code,framework_id,N,D,R,control_rate,crsr,crsr_ci95_low,crsr_ci95_high
+F1,direct_tool_calling:v4,1440,1149,290,79.79%,25.24%,4.46%,49.73%
+F2,langgraph_agent:v4,1440,1132,292,78.61%,25.80%,4.48%,50.22%

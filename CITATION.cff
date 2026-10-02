@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use UndoBench in your research, please cite it as below."
+title: "UndoBench: Separating Task Competence from Recovery Capability in Tool-Using AI Agents"
+version: 1.0.1
+date-released: 2026-09-25
+url: "https://github.com/tradertanmay/undobench"
+authors:
+  - family-names: "Sah"
+    given-names: "Dolly"
+  - family-names: "Sah"
+    given-names: "Tanmay"
+  - family-names: "Jain"
+    given-names: "Harshul"
+  - family-names: "Sah"
+    given-names: "Tanya"
+preferred-citation:
+  type: article
+  title: "UndoBench: Separating Task Competence from Recovery Capability in Tool-Using AI Agents"
+  authors:
+    - family-names: "Sah"
+      given-names: "Dolly"
+    - family-names: "Sah"
+      given-names: "Tanmay"
+    - family-names: "Jain"
+      given-names: "Harshul"
+    - family-names: "Sah"
+      given-names: "Tanya"
+  year: 2026
+  notes: "Conference Submission / Preprint"

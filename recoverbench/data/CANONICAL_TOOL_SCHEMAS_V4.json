@@ -1,0 +1,1839 @@
+{
+  "version": "4.0.0",
+  "description": "RecoverBench Canonical Tool Schema Registry V4 (100% complete coverage for DEV, VALIDATION, and TEST).",
+  "tools": {
+    "advance_opportunity_stage": {
+      "name": "advance_opportunity_stage",
+      "description": "Transition sales opportunity to a new stage with updated deal value.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "opp_id": {
+            "type": "string",
+            "description": "Unique identifier of the sales opportunity."
+          },
+          "stage": {
+            "type": "string",
+            "description": "Target pipeline stage (e.g. 'CLOSED_WON', 'NEGOTIATION')."
+          },
+          "deal_value": {
+            "type": "number",
+            "description": "The monetary deal value associated with the opportunity."
+          }
+        },
+        "required": [
+          "opp_id",
+          "stage",
+          "deal_value"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "allocate_dividend": {
+      "name": "allocate_dividend",
+      "description": "Allocate monetary dividend payment to a customer account balance.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "description": "Unique customer account identifier."
+          },
+          "dividend": {
+            "type": "number",
+            "description": "The dividend amount to allocate."
+          }
+        },
+        "required": [
+          "account_id",
+          "dividend"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "apply_schema_migration": {
+      "name": "apply_schema_migration",
+      "description": "Execute and record a database schema migration version.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "integer",
+            "description": "The target migration schema version number."
+          }
+        },
+        "required": [
+          "version"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "assign_incident_team": {
+      "name": "assign_incident_team",
+      "description": "Assign incident ownership to a designated engineering team.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "incident_id": {
+            "type": "string",
+            "description": "Unique incident identifier."
+          },
+          "team_name": {
+            "type": "string",
+            "description": "Name of the engineering team (e.g. 'InfraSec', 'DatabaseOps')."
+          }
+        },
+        "required": [
+          "incident_id",
+          "team_name"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "broadcast_sms_notification": {
+      "name": "broadcast_sms_notification",
+      "description": "Dispatch SMS notification alert to recipient phone number. Irreversible external action.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "phone_number": {
+            "type": "string",
+            "description": "Recipient phone number in E.164 format (e.g. '+15550199')."
+          },
+          "text": {
+            "type": "string",
+            "description": "The text message content to transmit."
+          }
+        },
+        "required": [
+          "phone_number",
+          "text"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "commit_changes": {
+      "name": "commit_changes",
+      "description": "Stage modified files and create a Git commit with a descriptive message.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "The commit message describing the changes."
+          },
+          "paths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Optional list of file paths to stage. Defaults to all modified files."
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "complete_multipart_upload": {
+      "name": "complete_multipart_upload",
+      "description": "Assemble previously uploaded parts into a completed cloud storage object.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "upload_id": {
+            "type": "string",
+            "description": "The identifier of the active multipart upload to finalize."
+          },
+          "parts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "part_number": {
+                  "type": "integer",
+                  "description": "Sequential part number."
+                },
+                "etag": {
+                  "type": "string",
+                  "description": "ETag hash returned when uploading the part."
+                }
+              },
+              "required": [
+                "part_number",
+                "etag"
+              ],
+              "additionalProperties": false
+            },
+            "description": "Optional list of uploaded parts with part numbers and ETags."
+          }
+        },
+        "required": [
+          "upload_id"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "convert_lead_status": {
+      "name": "convert_lead_status",
+      "description": "Transition CRM lead workflow status (e.g. 'ACTIVE_CUSTOMER', 'QUALIFIED').",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "lead_id": {
+            "type": "string",
+            "description": "Unique identifier of the lead record."
+          },
+          "new_status": {
+            "type": "string",
+            "description": "The new status string to apply to the lead."
+          }
+        },
+        "required": [
+          "lead_id",
+          "new_status"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "copy_object": {
+      "name": "copy_object",
+      "description": "Copy an object atomically between cloud storage buckets or keys.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "source_bucket": {
+            "type": "string",
+            "description": "The source cloud storage bucket."
+          },
+          "source_key": {
+            "type": "string",
+            "description": "The source object key."
+          },
+          "dest_bucket": {
+            "type": "string",
+            "description": "The destination cloud storage bucket."
+          },
+          "dest_key": {
+            "type": "string",
+            "description": "The destination object key."
+          }
+        },
+        "required": [
+          "source_bucket",
+          "source_key",
+          "dest_bucket",
+          "dest_key"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "create_branch": {
+      "name": "create_branch",
+      "description": "Create and switch to a new Git branch in the workspace repository.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "branch_name": {
+            "type": "string",
+            "description": "Name of the new branch to create."
+          }
+        },
+        "required": [
+          "branch_name"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "create_order": {
+      "name": "create_order",
+      "description": "Create a customer order record in the database.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "string",
+            "description": "Unique order identifier."
+          },
+          "customer_id": {
+            "type": "string",
+            "description": "Identifier of the purchasing customer."
+          },
+          "amount": {
+            "type": "number",
+            "description": "Total order purchase amount."
+          },
+          "status": {
+            "type": "string",
+            "description": "Initial order status (defaults to 'CONFIRMED')."
+          }
+        },
+        "required": [
+          "order_id",
+          "customer_id",
+          "amount"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "create_tag": {
+      "name": "create_tag",
+      "description": "Create an annotated or lightweight Git tag at the current commit.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "tag_name": {
+            "type": "string",
+            "description": "Name of the Git tag to create."
+          },
+          "message": {
+            "type": "string",
+            "description": "Optional annotation message for the tag."
+          }
+        },
+        "required": [
+          "tag_name"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "credit_account_balance": {
+      "name": "credit_account_balance",
+      "description": "Credit a specified monetary amount to an account balance.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "description": "The unique identifier of the destination account."
+          },
+          "amount": {
+            "type": "number",
+            "description": "The monetary amount to credit (numeric value, e.g. 30.0)."
+          }
+        },
+        "required": [
+          "account_id",
+          "amount"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "deduct_account_balance": {
+      "name": "deduct_account_balance",
+      "description": "Deduct a specified monetary amount from an account balance.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "description": "The unique identifier of the source account."
+          },
+          "amount": {
+            "type": "number",
+            "description": "The monetary amount to deduct (numeric value, e.g. 30.0)."
+          }
+        },
+        "required": [
+          "account_id",
+          "amount"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "delete_object": {
+      "name": "delete_object",
+      "description": "Delete an object from a designated cloud storage bucket.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "bucket_name": {
+            "type": "string",
+            "description": "The name of the target cloud storage bucket."
+          },
+          "key": {
+            "type": "string",
+            "description": "The object key path in the bucket."
+          }
+        },
+        "required": [
+          "bucket_name",
+          "key"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "deploy_green_service": {
+      "name": "deploy_green_service",
+      "description": "Deploy green environment container instances for a cloud service.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "service_name": {
+            "type": "string",
+            "description": "Name of the cloud service to deploy."
+          },
+          "version": {
+            "type": "string",
+            "description": "Target deployment version tag."
+          }
+        },
+        "required": [
+          "service_name",
+          "version"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "disburse_split_payout": {
+      "name": "disburse_split_payout",
+      "description": "Disburse a payout split to a specific merchant account.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "payout_id": {
+            "type": "string",
+            "description": "The unique identifier for the split payout transaction."
+          },
+          "merchant_id": {
+            "type": "string",
+            "description": "The identifier of the merchant receiving the disbursement."
+          },
+          "amount_cents": {
+            "type": "integer",
+            "description": "The payout disbursement amount in integer cents."
+          },
+          "idempotency_key": {
+            "type": "string",
+            "description": "Optional unique key to ensure idempotent execution."
+          }
+        },
+        "required": [
+          "payout_id",
+          "merchant_id",
+          "amount_cents"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "dispatch_oncall_page": {
+      "name": "dispatch_oncall_page",
+      "description": "Page the on-call engineer via high-urgency pager notification.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "incident_id": {
+            "type": "string",
+            "description": "Unique incident identifier."
+          },
+          "oncall_engineer": {
+            "type": "string",
+            "description": "Name or username of the engineer on call."
+          },
+          "urgency": {
+            "type": "string",
+            "description": "Urgency level (defaults to 'HIGH')."
+          }
+        },
+        "required": [
+          "incident_id",
+          "oncall_engineer"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "dispatch_resolution_notice": {
+      "name": "dispatch_resolution_notice",
+      "description": "Send customer notification email that an incident has been resolved.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "incident_id": {
+            "type": "string",
+            "description": "Unique incident identifier."
+          },
+          "customer_email": {
+            "type": "string",
+            "description": "Recipient email address for the resolution notice."
+          }
+        },
+        "required": [
+          "incident_id",
+          "customer_email"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "drain_and_terminate": {
+      "name": "drain_and_terminate",
+      "description": "Drain traffic and terminate compute instances from an autoscaling group.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "service_name": {
+            "type": "string",
+            "description": "Name of the autoscaling group service."
+          },
+          "instances_to_remove": {
+            "type": "integer",
+            "description": "The number of instances to safely drain and terminate."
+          }
+        },
+        "required": [
+          "service_name",
+          "instances_to_remove"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "escalate_incident_sla": {
+      "name": "escalate_incident_sla",
+      "description": "Escalate incident to a higher SLA response tier.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "incident_id": {
+            "type": "string",
+            "description": "Unique incident identifier."
+          },
+          "tier": {
+            "type": "string",
+            "description": "Target SLA tier (e.g. 'TIER_1', 'EXECUTIVE')."
+          }
+        },
+        "required": [
+          "incident_id",
+          "tier"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "execute_wire_transfer": {
+      "name": "execute_wire_transfer",
+      "description": "Execute cross-currency international wire transfer between accounts.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "wire_id": {
+            "type": "string",
+            "description": "Unique wire transaction identifier."
+          },
+          "source_curr": {
+            "type": "string",
+            "description": "Source currency code (e.g. 'USD')."
+          },
+          "target_curr": {
+            "type": "string",
+            "description": "Target currency code (e.g. 'EUR')."
+          },
+          "amount_cents": {
+            "type": "integer",
+            "description": "Transfer amount in integer cents."
+          },
+          "idempotency_key": {
+            "type": "string",
+            "description": "Optional idempotency key to prevent duplicate transfers."
+          }
+        },
+        "required": [
+          "wire_id",
+          "source_curr",
+          "target_curr",
+          "amount_cents"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "merge_branch": {
+      "name": "merge_branch",
+      "description": "Merge target branch into the current Git branch.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "branch_name": {
+            "type": "string",
+            "description": "Name of the branch to merge."
+          },
+          "fast_forward": {
+            "type": "boolean",
+            "description": "Whether to perform a fast-forward merge if possible (defaults to True)."
+          }
+        },
+        "required": [
+          "branch_name"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "merge_customer_accounts": {
+      "name": "merge_customer_accounts",
+      "description": "Merge secondary customer account into primary account, consolidating records.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "primary_id": {
+            "type": "string",
+            "description": "Primary account identifier to preserve."
+          },
+          "secondary_id": {
+            "type": "string",
+            "description": "Secondary account identifier to merge and close."
+          }
+        },
+        "required": [
+          "primary_id",
+          "secondary_id"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "page_oncall_engineer": {
+      "name": "page_oncall_engineer",
+      "description": "Dispatch high-urgency PagerDuty incident alert. Irreversible external action.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "service": {
+            "type": "string",
+            "description": "Affected service name."
+          },
+          "alert_title": {
+            "type": "string",
+            "description": "Alert title describing the outage."
+          },
+          "severity": {
+            "type": "string",
+            "description": "Alert severity level (defaults to 'P1')."
+          }
+        },
+        "required": [
+          "service",
+          "alert_title"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "post_journal_entry": {
+      "name": "post_journal_entry",
+      "description": "Post a double-entry ledger transaction debiting one account and crediting another.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "debit_account": {
+            "type": "string",
+            "description": "Account identifier to debit."
+          },
+          "credit_account": {
+            "type": "string",
+            "description": "Account identifier to credit."
+          },
+          "amount_cents": {
+            "type": "integer",
+            "description": "Transaction amount in integer cents."
+          },
+          "memo": {
+            "type": "string",
+            "description": "Optional transaction memo or description."
+          },
+          "is_compensating": {
+            "type": "boolean",
+            "description": "Whether this entry is a compensating reversal (defaults to False)."
+          }
+        },
+        "required": [
+          "debit_account",
+          "credit_account",
+          "amount_cents"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "post_webhook_event": {
+      "name": "post_webhook_event",
+      "description": "Post a structured JSON security or monitoring event to a remote webhook endpoint.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "target_url": {
+            "type": "string",
+            "description": "The HTTPS URL of the destination webhook endpoint."
+          },
+          "event_type": {
+            "type": "string",
+            "description": "The classification identifier of the event."
+          },
+          "payload": {
+            "type": "object",
+            "description": "Structured JSON payload containing event metadata and attributes."
+          },
+          "idempotency_key": {
+            "type": "string",
+            "description": "Optional idempotency key to prevent duplicate event ingestion."
+          }
+        },
+        "required": [
+          "target_url",
+          "event_type",
+          "payload"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "process_subscription_renewal": {
+      "name": "process_subscription_renewal",
+      "description": "Process recurring subscription billing charge for an account.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "sub_id": {
+            "type": "string",
+            "description": "Subscription identifier."
+          },
+          "plan_id": {
+            "type": "string",
+            "description": "Billing plan identifier."
+          },
+          "amount_cents": {
+            "type": "integer",
+            "description": "Renewal charge amount in integer cents."
+          },
+          "idempotency_key": {
+            "type": "string",
+            "description": "Optional idempotency key to prevent duplicate charges."
+          }
+        },
+        "required": [
+          "sub_id",
+          "plan_id",
+          "amount_cents"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "provision_cluster_tier": {
+      "name": "provision_cluster_tier",
+      "description": "Provision compute instances for a dedicated cluster tier.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "tier_name": {
+            "type": "string",
+            "description": "Name of the compute tier."
+          },
+          "instance_count": {
+            "type": "integer",
+            "description": "Number of compute instances to provision."
+          },
+          "instance_type": {
+            "type": "string",
+            "description": "Instance hardware type (defaults to 'c5.large')."
+          }
+        },
+        "required": [
+          "tier_name",
+          "instance_count"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "put_object": {
+      "name": "put_object",
+      "description": "Upload an object artifact to a designated cloud storage bucket.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "bucket_name": {
+            "type": "string",
+            "description": "The name of the target cloud storage bucket."
+          },
+          "key": {
+            "type": "string",
+            "description": "The object key path in the bucket."
+          },
+          "content": {
+            "type": "string",
+            "description": "The text content or serialized data of the object."
+          },
+          "if_match_etag": {
+            "type": "string",
+            "description": "Optional ETag precondition for optimistic concurrency."
+          }
+        },
+        "required": [
+          "bucket_name",
+          "key",
+          "content"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "queue_welcome_sequence": {
+      "name": "queue_welcome_sequence",
+      "description": "Queue welcome onboarding email sequence for a newly converted CRM lead.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "lead_id": {
+            "type": "string",
+            "description": "Unique identifier of the converted lead."
+          },
+          "template": {
+            "type": "string",
+            "description": "Email template identifier (defaults to 'welcome_v1')."
+          }
+        },
+        "required": [
+          "lead_id"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "refund_charge": {
+      "name": "refund_charge",
+      "description": "Issue a monetary refund on an existing payment charge.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "charge_id": {
+            "type": "string",
+            "description": "Unique identifier of the charge to refund."
+          },
+          "amount_cents": {
+            "type": "integer",
+            "description": "Refund amount in integer cents."
+          },
+          "idempotency_key": {
+            "type": "string",
+            "description": "Optional idempotency key to guarantee single refund."
+          }
+        },
+        "required": [
+          "charge_id",
+          "amount_cents"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "renew_enterprise_sla": {
+      "name": "renew_enterprise_sla",
+      "description": "Renew customer account enterprise SLA contract tier.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "description": "Unique customer account identifier."
+          },
+          "sla_tier": {
+            "type": "string",
+            "description": "Target SLA tier (e.g. 'ENTERPRISE_PLATINUM')."
+          }
+        },
+        "required": [
+          "account_id",
+          "sla_tier"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "reserve_inventory": {
+      "name": "reserve_inventory",
+      "description": "Deduct and reserve stock quantity from warehouse inventory.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "item_id": {
+            "type": "string",
+            "description": "Inventory item SKU or identifier."
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Quantity units to reserve."
+          }
+        },
+        "required": [
+          "item_id",
+          "quantity"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "resolve_incident": {
+      "name": "resolve_incident",
+      "description": "Mark an incident as RESOLVED with accompanying post-mortem resolution note.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "incident_id": {
+            "type": "string",
+            "description": "Unique incident identifier."
+          },
+          "resolution_note": {
+            "type": "string",
+            "description": "Summary explanation of the resolution action."
+          }
+        },
+        "required": [
+          "incident_id",
+          "resolution_note"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "scale_service": {
+      "name": "scale_service",
+      "description": "Scale cloud compute service instances to a target replica count.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "service_name": {
+            "type": "string",
+            "description": "Name of the cloud service to scale."
+          },
+          "new_replicas": {
+            "type": "integer",
+            "description": "Target number of operational replicas."
+          }
+        },
+        "required": [
+          "service_name",
+          "new_replicas"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "send_batch_email": {
+      "name": "send_batch_email",
+      "description": "Dispatch marketing or transactional batch email to multiple recipients.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "campaign_id": {
+            "type": "string",
+            "description": "Unique campaign identifier."
+          },
+          "recipients": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of recipient email addresses."
+          },
+          "template_id": {
+            "type": "string",
+            "description": "Template identifier for the email content."
+          },
+          "idempotency_key": {
+            "type": "string",
+            "description": "Optional idempotency key to prevent duplicate email blasts."
+          }
+        },
+        "required": [
+          "campaign_id",
+          "recipients",
+          "template_id"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "send_slack_alert": {
+      "name": "send_slack_alert",
+      "description": "Post an incident alert message to a designated Slack channel. Warning: External communication is irreversible.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "channel": {
+            "type": "string",
+            "description": "The target Slack channel name (e.g., '#security-alerts')."
+          },
+          "message": {
+            "type": "string",
+            "description": "The message body to broadcast."
+          }
+        },
+        "required": [
+          "channel",
+          "message"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "storage_upload": {
+      "name": "storage_upload",
+      "description": "Alias for put_object: Upload an object artifact to a designated cloud storage bucket.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "bucket_name": {
+            "type": "string",
+            "description": "The name of the target cloud storage bucket."
+          },
+          "key": {
+            "type": "string",
+            "description": "The object key path in the bucket."
+          },
+          "content": {
+            "type": "string",
+            "description": "The text content or serialized data of the object."
+          },
+          "if_match_etag": {
+            "type": "string",
+            "description": "Optional ETag precondition for optimistic concurrency."
+          }
+        },
+        "required": [
+          "bucket_name",
+          "key",
+          "content"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "switch_traffic_routing": {
+      "name": "switch_traffic_routing",
+      "description": "Cutover ingress traffic router to target deployment color (e.g. 'green').",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "service_name": {
+            "type": "string",
+            "description": "Name of the target cloud service."
+          },
+          "target_color": {
+            "type": "string",
+            "description": "Target deployment environment color (e.g. 'green', 'blue')."
+          }
+        },
+        "required": [
+          "service_name",
+          "target_color"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sync_discovery_catalog": {
+      "name": "sync_discovery_catalog",
+      "description": "Register active running instances into the global service catalog.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "service_name": {
+            "type": "string",
+            "description": "Name of the service to synchronize in service discovery."
+          }
+        },
+        "required": [
+          "service_name"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "update_incident_status": {
+      "name": "update_incident_status",
+      "description": "Update incident severity, status, or assignee.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "incident_id": {
+            "type": "string",
+            "description": "Unique incident identifier."
+          },
+          "new_severity": {
+            "type": "string",
+            "description": "Optional updated incident severity (e.g. 'CRITICAL', 'MAJOR', 'MINOR')."
+          },
+          "new_status": {
+            "type": "string",
+            "description": "Optional updated incident workflow status (e.g. 'INVESTIGATING', 'RESOLVED')."
+          },
+          "assignee": {
+            "type": "string",
+            "description": "Optional username of the newly assigned engineer."
+          }
+        },
+        "required": [
+          "incident_id"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "update_rep_quota": {
+      "name": "update_rep_quota",
+      "description": "Credit sales representative quota attainment in CRM.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "rep_id": {
+            "type": "string",
+            "description": "Sales representative identifier."
+          },
+          "amount": {
+            "type": "number",
+            "description": "Monetary quota amount to credit."
+          }
+        },
+        "required": [
+          "rep_id",
+          "amount"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "upgrade_customer_tier": {
+      "name": "upgrade_customer_tier",
+      "description": "Upgrade customer account membership tier (e.g. 'PREMIUM', 'VIP').",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "description": "Unique customer identifier."
+          },
+          "new_tier": {
+            "type": "string",
+            "description": "Target tier classification."
+          }
+        },
+        "required": [
+          "customer_id",
+          "new_tier"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "upload_part": {
+      "name": "upload_part",
+      "description": "Upload an individual chunk/part of a multipart cloud storage upload.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "upload_id": {
+            "type": "string",
+            "description": "The identifier of the active multipart upload."
+          },
+          "part_number": {
+            "type": "integer",
+            "description": "The 1-based sequential part number."
+          },
+          "data": {
+            "type": "string",
+            "description": "The chunk data payload for this part."
+          }
+        },
+        "required": [
+          "upload_id",
+          "part_number",
+          "data"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "write_audit_record": {
+      "name": "write_audit_record",
+      "description": "Insert an immutable audit log record for an entity action.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "entity_id": {
+            "type": "string",
+            "description": "Identifier of the entity being audited."
+          },
+          "action": {
+            "type": "string",
+            "description": "The action performed (e.g. 'UPGRADE', 'MIGRATION')."
+          },
+          "details": {
+            "type": "string",
+            "description": "Optional details or notes regarding the audited action."
+          }
+        },
+        "required": [
+          "entity_id",
+          "action"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "write_workspace_file": {
+      "name": "write_workspace_file",
+      "description": "Write or overwrite file contents at a relative path within the repository workspace.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "relative_path": {
+            "type": "string",
+            "description": "Relative file path within the workspace."
+          },
+          "content": {
+            "type": "string",
+            "description": "The text content to write to the file."
+          }
+        },
+        "required": [
+          "relative_path",
+          "content"
+        ],
+        "additionalProperties": false
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "result": {
+            "type": "object"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

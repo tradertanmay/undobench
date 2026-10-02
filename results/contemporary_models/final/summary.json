@@ -1,0 +1,262 @@
+{
+  "benchmark_phase": "RB-7N.7T",
+  "frozen_code_commit": "cc3108e684f9af105ce72c19737f6077f57fdf59",
+  "matrix_sha256": "5c6066a380bc9f2615d995ff2e55481c4d073965b8778c74de6b2d23623b352f",
+  "trajectories_sha256": "b0f989920d517efb3eeeff85b4d382d77aa676aa3cfa1ba09d389f897af1688a",
+  "total_executions": 5760,
+  "total_paired_trials": 2880,
+  "total_prompt_tokens": 7564703,
+  "total_completion_tokens": 1523703,
+  "total_llm_calls": 13330,
+  "total_tool_calls": 8717,
+  "actual_cost_usd": {
+    "M3_gemini": 0.8789,
+    "M4_glm": 3.3124,
+    "total": 4.1913
+  },
+  "by_model": {
+    "M3": {
+      "model_id": "google/gemini-3.8-flash",
+      "trials": 1440,
+      "control": 0.8069,
+      "control_ci95": [
+        0.5694,
+        0.9861
+      ],
+      "rsr": 0.2111,
+      "rsr_ci95": [
+        0.0424,
+        0.4076
+      ],
+      "crsr": 0.2547,
+      "crsr_ci95": [
+        0.0546,
+        0.4831
+      ],
+      "der": 0.609,
+      "der_ci95": [
+        0.359,
+        0.8424
+      ],
+      "mer": 0.1951,
+      "competence_recovery_gap": 0.5522,
+      "by_method": {
+        "B0": {
+          "control": 0.8104,
+          "crsr": 0.2108,
+          "crsr_ci95": [
+            0.0273,
+            0.4387
+          ],
+          "der": 0.6562,
+          "der_ci95": [
+            0.4083,
+            0.8812
+          ],
+          "eor": 0.8292
+        },
+        "B2": {
+          "control": 0.8,
+          "crsr": 0.3333,
+          "crsr_ci95": [
+            0.0833,
+            0.6133
+          ],
+          "der": 0.5396,
+          "der_ci95": [
+            0.2583,
+            0.7896
+          ],
+          "eor": 0.8187
+        },
+        "B5": {
+          "control": 0.8104,
+          "crsr": 0.2211,
+          "crsr_ci95": [
+            0.0222,
+            0.4565
+          ],
+          "der": 0.6312,
+          "der_ci95": [
+            0.3812,
+            0.8604
+          ],
+          "eor": 0.8125
+        }
+      }
+    },
+    "M4": {
+      "model_id": "zai-org/glm-5.2-maas",
+      "trials": 1440,
+      "control": 0.7771,
+      "control_ci95": [
+        0.5271,
+        1.0
+      ],
+      "rsr": 0.2021,
+      "rsr_ci95": [
+        0.0153,
+        0.4306
+      ],
+      "crsr": 0.2556,
+      "crsr_ci95": [
+        0.015,
+        0.5338
+      ],
+      "der": 0.4826,
+      "der_ci95": [
+        0.2326,
+        0.75
+      ],
+      "mer": 0.3153,
+      "competence_recovery_gap": 0.5215,
+      "by_method": {
+        "B0": {
+          "control": 0.7708,
+          "crsr": 0.2189,
+          "crsr_ci95": [
+            0.0,
+            0.5
+          ],
+          "der": 0.5125,
+          "der_ci95": [
+            0.25,
+            0.775
+          ],
+          "eor": 0.6854
+        },
+        "B2": {
+          "control": 0.7812,
+          "crsr": 0.3307,
+          "crsr_ci95": [
+            0.0328,
+            0.6507
+          ],
+          "der": 0.4167,
+          "der_ci95": [
+            0.1667,
+            0.6667
+          ],
+          "eor": 0.6813
+        },
+        "B5": {
+          "control": 0.7792,
+          "crsr": 0.2166,
+          "crsr_ci95": [
+            0.0,
+            0.5025
+          ],
+          "der": 0.5188,
+          "der_ci95": [
+            0.25,
+            0.7875
+          ],
+          "eor": 0.6875
+        }
+      }
+    }
+  },
+  "by_method": {
+    "B0": {
+      "trials": 960,
+      "control": 0.7906,
+      "crsr": 0.2148,
+      "crsr_ci95": [
+        0.0131,
+        0.4605
+      ],
+      "der": 0.5844,
+      "der_ci95": [
+        0.3396,
+        0.825
+      ],
+      "eor": 0.7573
+    },
+    "B2": {
+      "trials": 960,
+      "control": 0.7906,
+      "crsr": 0.332,
+      "crsr_ci95": [
+        0.0812,
+        0.6233
+      ],
+      "der": 0.4781,
+      "der_ci95": [
+        0.225,
+        0.75
+      ],
+      "eor": 0.75
+    },
+    "B5": {
+      "trials": 960,
+      "control": 0.7948,
+      "crsr": 0.2189,
+      "crsr_ci95": [
+        0.0128,
+        0.4729
+      ],
+      "der": 0.575,
+      "der_ci95": [
+        0.3271,
+        0.8229
+      ],
+      "eor": 0.75
+    }
+  },
+  "by_framework": {
+    "F1": {
+      "trials": 1440,
+      "control": 0.7979,
+      "crsr": 0.2524,
+      "crsr_ci95": [
+        0.0446,
+        0.4973
+      ]
+    },
+    "F2": {
+      "trials": 1440,
+      "control": 0.7861,
+      "crsr": 0.258,
+      "crsr_ci95": [
+        0.0448,
+        0.5022
+      ]
+    }
+  },
+  "contrasts": {
+    "B2_minus_B0_CRSR": {
+      "observed_diff": 0.1173,
+      "ci_95": [
+        0.0012,
+        0.3334
+      ],
+      "p_val": 0.0154
+    },
+    "B5_minus_B0_CRSR": {
+      "observed_diff": 0.0041,
+      "ci_95": [
+        -0.0217,
+        0.0321
+      ],
+      "p_val": 0.9208
+    },
+    "B5_minus_B2_CRSR": {
+      "observed_diff": -0.1131,
+      "ci_95": [
+        -0.3346,
+        0.0013
+      ],
+      "p_val": 0.1122
+    }
+  },
+  "tost_framework": {
+    "observed_diff": -0.0056,
+    "ci_90": [
+      -0.0237,
+      0.0059
+    ],
+    "margin": 0.1,
+    "equivalent": true,
+    "conclusion": "EQUIVALENT"
+  }
+}

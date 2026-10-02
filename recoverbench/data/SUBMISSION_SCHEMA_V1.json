@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RecoverBench Leaderboard Submission Schema V1",
+  "description": "Standardized schema for submitting RecoverBench evaluation results for verification and leaderboard publication.",
+  "type": "object",
+  "required": [
+    "submission_id",
+    "benchmark_version",
+    "protocol_version",
+    "date",
+    "track",
+    "agent",
+    "metrics",
+    "verification"
+  ],
+  "properties": {
+    "submission_id": {
+      "type": "string",
+      "description": "Unique UUID or submission slug."
+    },
+    "benchmark_version": {
+      "type": "string",
+      "description": "Target RecoverBench version (e.g. 1.0.1)."
+    },
+    "protocol_version": {
+      "type": "string",
+      "description": "Harness protocol version (e.g. V4)."
+    },
+    "date": {
+      "type": "string",
+      "description": "ISO 8601 submission timestamp."
+    },
+    "track": {
+      "type": "string",
+      "enum": ["STANDARD", "CUSTOM"],
+      "description": "Evaluation track: STANDARD (unmodified tasks/prompts/evaluator) or CUSTOM."
+    },
+    "verification_status": {
+      "type": "string",
+      "enum": ["VERIFIED", "SELF-REPORTED", "CUSTOM"],
+      "description": "Audit status: VERIFIED (automated checks passed), SELF-REPORTED, or CUSTOM."
+    },
+    "trust_level": {
+      "type": "string",
+      "enum": ["OPEN_REPRODUCIBLE", "OFFICIAL_VERIFIED"],
+      "description": "Trust tier: OPEN_REPRODUCIBLE (local open evaluator) or OFFICIAL_VERIFIED (re-executed/validated in official CI)."
+    },
+    "organization": {
+      "type": "string",
+      "description": "Submitting organization or individual."
+    },
+    "paper_url": {
+      "type": ["string", "null"],
+      "description": "URL to technical report or preprint."
+    },
+    "repo_url": {
+      "type": ["string", "null"],
+      "description": "URL to public code repository."
+    },
+    "agent": {
+      "type": "object",
+      "required": ["name", "version", "framework"],
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" },
+        "framework": { "type": "string" },
+        "model_name": { "type": ["string", "null"] },
+        "model_digest": { "type": ["string", "null"] },
+        "recovery_strategy": { "type": ["string", "null"] }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": ["control_rate", "rsr", "crsr", "eor", "der", "mer"],
+      "properties": {
+        "control_rate": { "type": "number" },
+        "rsr": { "type": "number" },
+        "crsr": { "type": ["number", "null"] },
+        "eor": { "type": ["number", "null"] },
+        "der": { "type": "number" },
+        "mer": { "type": "number" },
+        "total_pairs": { "type": "integer" }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "required": ["trajectory_file_hash", "task_manifest_hash", "complete_coverage"],
+      "properties": {
+        "trajectory_file_hash": { "type": "string" },
+        "task_manifest_hash": { "type": "string" },
+        "complete_coverage": { "type": "boolean" },
+        "offline_reproduced": { "type": "boolean" },
+        "notes": { "type": "string" }
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,542 @@
+{
+  "benchmark_version": "1.0.1",
+  "phase": "RB-3C",
+  "evaluation_stage": "FINAL_FROZEN_TEST",
+  "timestamp": "2026-09-23T05:27:19Z",
+  "total_executions": 5760,
+  "total_pairs": 2880,
+  "raw_trajectories_sha256": "1016768449aae019484130b23fda33456861abeb161a5f8dfbeb16e9e5e9f882",
+  "primary_outcomes": {
+    "p1_ctrl_success_rate": {
+      "success_count": 2406,
+      "denominator": 2880,
+      "rate": 0.8354,
+      "wilson_95": [
+        0.8214,
+        0.8485
+      ],
+      "bootstrap_95": [
+        0.6417,
+        0.9875
+      ]
+    },
+    "p2_unconditional_rsr": {
+      "success_count": 1124,
+      "denominator": 2880,
+      "rate": 0.3903,
+      "wilson_95": [
+        0.3726,
+        0.4082
+      ],
+      "bootstrap_95": [
+        0.1604,
+        0.6347
+      ]
+    },
+    "p3_conditional_crsr": {
+      "success_count": 1124,
+      "denominator": 2406,
+      "rate": 0.4672,
+      "wilson_95": [
+        0.4473,
+        0.4871
+      ],
+      "bootstrap_95": [
+        0.2078,
+        0.728
+      ]
+    }
+  },
+  "secondary_safety_outcomes": {
+    "exactly_once_effect_rate": 0.0,
+    "duplicate_effect_rate": 0.5014,
+    "missing_effect_rate": 0.0986,
+    "unsafe_retry_rate": 0.5014,
+    "state_consistency_rate": 0.9486,
+    "conflict_safe_rate": 1.0,
+    "compensation_success_rate": 1.0
+  },
+  "method_contrasts_holm": {
+    "H1: B2 vs B0": {
+      "observed_diff": 0.1072,
+      "ci_95": [
+        0.0,
+        0.2423
+      ],
+      "ci_width": 0.2423,
+      "p_val": 1.0,
+      "holm_rank": 1,
+      "p_adj": 1.0,
+      "significant_05": false
+    },
+    "H2: B5 vs B0": {
+      "observed_diff": 0.0112,
+      "ci_95": [
+        0.0,
+        0.0384
+      ],
+      "ci_width": 0.0384,
+      "p_val": 1.0,
+      "holm_rank": 2,
+      "p_adj": 1.0,
+      "significant_05": false
+    },
+    "H3: B2 vs B5": {
+      "observed_diff": 0.096,
+      "ci_95": [
+        0.0,
+        0.2357
+      ],
+      "ci_width": 0.2357,
+      "p_val": 1.0,
+      "holm_rank": 3,
+      "p_adj": 1.0,
+      "significant_05": false
+    }
+  },
+  "framework_equivalence_tost": {
+    "ctrl": {
+      "observed_diff": 0.0,
+      "ci_90": [
+        0.0,
+        0.0
+      ],
+      "margin": 0.1,
+      "equivalent": true,
+      "conclusion": "EQUIVALENT"
+    },
+    "rsr": {
+      "observed_diff": 0.0042,
+      "ci_90": [
+        0.0,
+        0.0125
+      ],
+      "margin": 0.1,
+      "equivalent": true,
+      "conclusion": "EQUIVALENT"
+    },
+    "crsr": {
+      "observed_diff": 0.005,
+      "ci_90": [
+        0.0,
+        0.0153
+      ],
+      "margin": 0.1,
+      "equivalent": true,
+      "conclusion": "EQUIVALENT"
+    }
+  },
+  "seed_stability": {
+    "total_cells": 288,
+    "stable_success_cells": 156,
+    "stable_success_pct": 54.17,
+    "stable_failure_cells": 90,
+    "stable_failure_pct": 31.25,
+    "mixed_cells": 42,
+    "mixed_pct": 14.58
+  },
+  "common_support_model_analysis": {
+    "common_tasks": [
+      "RB-CLOUD-004",
+      "RB-CRM-004",
+      "RB-DB-004",
+      "RB-DB-005",
+      "RB-GIT-004",
+      "RB-MSG-004",
+      "RB-MSG-005",
+      "RB-PAY-004",
+      "RB-PAY-005",
+      "RB-STOR-004"
+    ],
+    "common_task_count": 10,
+    "m1_common_crsr": 0.445,
+    "m2_common_crsr": 0.5417,
+    "contrast": {
+      "observed_diff": -0.0967,
+      "ci_95": [
+        -0.227,
+        0.0114
+      ],
+      "ci_width": 0.2384,
+      "p_val": 1.0
+    }
+  },
+  "observability_stratification": {
+    "UNKNOWN_OUTCOME": {
+      "total_pairs": 2880,
+      "ctrl_rate": 0.8354,
+      "rsr": 0.3903,
+      "crsr": 0.4672,
+      "eor": 0.0,
+      "der": 0.5014,
+      "mer": 0.0986,
+      "urr": 0.5014,
+      "by_method": {
+        "B0": {
+          "crsr": 0.4277,
+          "eor": 0.0,
+          "der": 0.5333,
+          "urr": 0.5333
+        },
+        "B2": {
+          "crsr": 0.5349,
+          "eor": 0.0,
+          "der": 0.4542,
+          "urr": 0.4542
+        },
+        "B5": {
+          "crsr": 0.4389,
+          "eor": 0.0,
+          "der": 0.5167,
+          "urr": 0.5167
+        }
+      }
+    }
+  },
+  "reversibility_stratification": {
+    "COMPENSATABLE": {
+      "total_pairs": 2160,
+      "ctrl_rate": 0.7889,
+      "rsr": 0.3065,
+      "crsr": 0.3885,
+      "eor": 0.0,
+      "der": 0.5574,
+      "urr": 0.5574,
+      "by_method": {
+        "B0": {
+          "crsr": 0.3327,
+          "eor": 0.0,
+          "der": 0.6,
+          "urr": 0.6
+        },
+        "B2": {
+          "crsr": 0.4842,
+          "eor": 0.0,
+          "der": 0.4944,
+          "urr": 0.4944
+        },
+        "B5": {
+          "crsr": 0.3486,
+          "eor": 0.0,
+          "der": 0.5778,
+          "urr": 0.5778
+        }
+      }
+    },
+    "REVERSIBLE": {
+      "total_pairs": 240,
+      "ctrl_rate": 1.0,
+      "rsr": 1.0,
+      "crsr": 1.0,
+      "eor": 0.0,
+      "der": 0.0,
+      "urr": 0.0,
+      "by_method": {
+        "B0": {
+          "crsr": 1.0,
+          "eor": 0.0,
+          "der": 0.0,
+          "urr": 0.0
+        },
+        "B2": {
+          "crsr": 1.0,
+          "eor": 0.0,
+          "der": 0.0,
+          "urr": 0.0
+        },
+        "B5": {
+          "crsr": 1.0,
+          "eor": 0.0,
+          "der": 0.0,
+          "urr": 0.0
+        }
+      }
+    },
+    "IRREVERSIBLE": {
+      "total_pairs": 480,
+      "ctrl_rate": 0.9625,
+      "rsr": 0.4625,
+      "crsr": 0.4805,
+      "eor": 0.0,
+      "der": 0.5,
+      "urr": 0.5,
+      "by_method": {
+        "B0": {
+          "crsr": 0.4805,
+          "eor": 0.0,
+          "der": 0.5,
+          "urr": 0.5
+        },
+        "B2": {
+          "crsr": 0.4805,
+          "eor": 0.0,
+          "der": 0.5,
+          "urr": 0.5
+        },
+        "B5": {
+          "crsr": 0.4805,
+          "eor": 0.0,
+          "der": 0.5,
+          "urr": 0.5
+        }
+      }
+    }
+  },
+  "failure_taxonomy": {
+    "agent_failures": {
+      "AGENT_PREMATURE_TERMINATION": 234,
+      "AGENT_ARGUMENT_FAILURE": 240
+    },
+    "recovery_failures": {
+      "UNSAFE_RETRY": 1232,
+      "MISSING_EFFECT": 50
+    }
+  },
+  "cost_accounting": {
+    "total_executions": 5760,
+    "total_paired_trials": 2880,
+    "wall_clock_time_sec": 9724.56,
+    "total_prompt_tokens": 4264618,
+    "total_completion_tokens": 525478,
+    "total_tokens": 4790096,
+    "total_tool_calls": 7428,
+    "total_llm_calls": 11484,
+    "ctrl_latency_mean_ms": 2918.4,
+    "ctrl_latency_p50_ms": 2887.7,
+    "ctrl_latency_p95_ms": 5494.1,
+    "fault_latency_mean_ms": 3784.1,
+    "fault_latency_p50_ms": 3043.7,
+    "fault_latency_p95_ms": 7361.7,
+    "mean_recovery_overhead_ms": 865.7
+  },
+  "by_task": {
+    "RB-CLOUD-004": {
+      "name": "Blue-Green Service Deployment Cutover",
+      "domain": "cloud",
+      "pairs": 240,
+      "ctrl_success": 240,
+      "ctrl_rate": 1.0,
+      "fault_success": 240,
+      "rsr": 1.0,
+      "crsr_denominator": 240,
+      "crsr_success": 240,
+      "crsr": 1.0,
+      "m1_ctrl": 120,
+      "m1_supported": true,
+      "m1_crsr": 1.0,
+      "m2_ctrl": 120,
+      "m2_supported": true,
+      "m2_crsr": 1.0,
+      "common_support": true
+    },
+    "RB-CRM-004": {
+      "name": "Enterprise SLA Tier Renewal",
+      "domain": "crm",
+      "pairs": 240,
+      "ctrl_success": 240,
+      "ctrl_rate": 1.0,
+      "fault_success": 0,
+      "rsr": 0.0,
+      "crsr_denominator": 240,
+      "crsr_success": 0,
+      "crsr": 0.0,
+      "m1_ctrl": 120,
+      "m1_supported": true,
+      "m1_crsr": 0.0,
+      "m2_ctrl": 120,
+      "m2_supported": true,
+      "m2_crsr": 0.0,
+      "common_support": true
+    },
+    "RB-DB-004": {
+      "name": "Schema Migration with Batch Audit Log",
+      "domain": "database",
+      "pairs": 240,
+      "ctrl_success": 144,
+      "ctrl_rate": 0.6,
+      "fault_success": 94,
+      "rsr": 0.3917,
+      "crsr_denominator": 144,
+      "crsr_success": 94,
+      "crsr": 0.6528,
+      "m1_ctrl": 120,
+      "m1_supported": true,
+      "m1_crsr": 0.6,
+      "m2_ctrl": 24,
+      "m2_supported": true,
+      "m2_crsr": 0.9167,
+      "common_support": true
+    },
+    "RB-DB-005": {
+      "name": "Read-Modify-Write Bank Dividend Allocation",
+      "domain": "database",
+      "pairs": 240,
+      "ctrl_success": 240,
+      "ctrl_rate": 1.0,
+      "fault_success": 0,
+      "rsr": 0.0,
+      "crsr_denominator": 240,
+      "crsr_success": 0,
+      "crsr": 0.0,
+      "m1_ctrl": 120,
+      "m1_supported": true,
+      "m1_crsr": 0.0,
+      "m2_ctrl": 120,
+      "m2_supported": true,
+      "m2_crsr": 0.0,
+      "common_support": true
+    },
+    "RB-GIT-004": {
+      "name": "Release Tag Cut and Cherry-Pick",
+      "domain": "git",
+      "pairs": 240,
+      "ctrl_success": 240,
+      "ctrl_rate": 1.0,
+      "fault_success": 240,
+      "rsr": 1.0,
+      "crsr_denominator": 240,
+      "crsr_success": 240,
+      "crsr": 1.0,
+      "m1_ctrl": 120,
+      "m1_supported": true,
+      "m1_crsr": 1.0,
+      "m2_ctrl": 120,
+      "m2_supported": true,
+      "m2_crsr": 1.0,
+      "common_support": true
+    },
+    "RB-MSG-004": {
+      "name": "High-Urgency Pager Callout with Delivery ACK",
+      "domain": "messaging",
+      "pairs": 240,
+      "ctrl_success": 240,
+      "ctrl_rate": 1.0,
+      "fault_success": 0,
+      "rsr": 0.0,
+      "crsr_denominator": 240,
+      "crsr_success": 0,
+      "crsr": 0.0,
+      "m1_ctrl": 120,
+      "m1_supported": true,
+      "m1_crsr": 0.0,
+      "m2_ctrl": 120,
+      "m2_supported": true,
+      "m2_crsr": 0.0,
+      "common_support": true
+    },
+    "RB-MSG-005": {
+      "name": "Webhook Fanout with Delivery Confirmation",
+      "domain": "messaging",
+      "pairs": 240,
+      "ctrl_success": 222,
+      "ctrl_rate": 0.925,
+      "fault_success": 222,
+      "rsr": 0.925,
+      "crsr_denominator": 222,
+      "crsr_success": 222,
+      "crsr": 1.0,
+      "m1_ctrl": 102,
+      "m1_supported": true,
+      "m1_crsr": 1.0,
+      "m2_ctrl": 120,
+      "m2_supported": true,
+      "m2_crsr": 1.0,
+      "common_support": true
+    },
+    "RB-PAY-004": {
+      "name": "Subscription Renewal with Grace Period",
+      "domain": "payments",
+      "pairs": 240,
+      "ctrl_success": 240,
+      "ctrl_rate": 1.0,
+      "fault_success": 144,
+      "rsr": 0.6,
+      "crsr_denominator": 240,
+      "crsr_success": 144,
+      "crsr": 0.6,
+      "m1_ctrl": 120,
+      "m1_supported": true,
+      "m1_crsr": 0.4,
+      "m2_ctrl": 120,
+      "m2_supported": true,
+      "m2_crsr": 0.8,
+      "common_support": true
+    },
+    "RB-PAY-005": {
+      "name": "Multi-Currency Cross-Border Wire Transfer",
+      "domain": "payments",
+      "pairs": 240,
+      "ctrl_success": 240,
+      "ctrl_rate": 1.0,
+      "fault_success": 184,
+      "rsr": 0.7667,
+      "crsr_denominator": 240,
+      "crsr_success": 184,
+      "crsr": 0.7667,
+      "m1_ctrl": 120,
+      "m1_supported": true,
+      "m1_crsr": 0.5333,
+      "m2_ctrl": 120,
+      "m2_supported": true,
+      "m2_crsr": 1.0,
+      "common_support": true
+    },
+    "RB-STOR-004": {
+      "name": "Cross-Bucket Object Replication",
+      "domain": "storage",
+      "pairs": 240,
+      "ctrl_success": 240,
+      "ctrl_rate": 1.0,
+      "fault_success": 0,
+      "rsr": 0.0,
+      "crsr_denominator": 240,
+      "crsr_success": 0,
+      "crsr": 0.0,
+      "m1_ctrl": 120,
+      "m1_supported": true,
+      "m1_crsr": 0.0,
+      "m2_ctrl": 120,
+      "m2_supported": true,
+      "m2_crsr": 0.0,
+      "common_support": true
+    },
+    "RB-STOR-005": {
+      "name": "Atomic Object Swap with Cleanup",
+      "domain": "storage",
+      "pairs": 240,
+      "ctrl_success": 0,
+      "ctrl_rate": 0.0,
+      "fault_success": 0,
+      "rsr": 0.0,
+      "crsr_denominator": 0,
+      "crsr_success": 0,
+      "crsr": null,
+      "m1_ctrl": 0,
+      "m1_supported": false,
+      "m1_crsr": null,
+      "m2_ctrl": 0,
+      "m2_supported": false,
+      "m2_crsr": null,
+      "common_support": false
+    },
+    "RB-TICK-004": {
+      "name": "SLA Breach Re-routing and Executive Escalation",
+      "domain": "ticketing",
+      "pairs": 240,
+      "ctrl_success": 120,
+      "ctrl_rate": 0.5,
+      "fault_success": 0,
+      "rsr": 0.0,
+      "crsr_denominator": 120,
+      "crsr_success": 0,
+      "crsr": 0.0,
+      "m1_ctrl": 120,
+      "m1_supported": true,
+      "m1_crsr": 0.0,
+      "m2_ctrl": 0,
+      "m2_supported": false,
+      "m2_crsr": null,
+      "common_support": false
+    }
+  }
+}
