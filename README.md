@@ -4,6 +4,8 @@
 
 # UndoBench: Measuring Recovery Capability and Side-Effect Safety in Tool-Using AI Agents
 
+[![arXiv](https://img.shields.io/badge/arXiv-2610.05622-b31b1b.svg)](https://arxiv.org/abs/2610.05622)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-yellow.svg)](https://huggingface.co/datasets/TanmaySah/undobench)
 [![UndoBench CI](https://img.shields.io/badge/UndoBench%20CI-passing-brightgreen.svg)](https://github.com/tradertanmay/undobench/actions/workflows/ci.yml)
 [![Benchmark Version](https://img.shields.io/badge/Benchmark-v1.0.1%20Frozen-blue.svg)](benchmark/manifests/TEST_MANIFEST_V1_0_1.json)
 [![Protocol](https://img.shields.io/badge/Protocol-V4-green.svg)](benchmark/protocol_v4/)
@@ -195,9 +197,10 @@ See [Submitting Results](docs/SUBMITTING_RESULTS.md) for submission instructions
 ```bibtex
 @article{undobench2026,
   title={UndoBench: Separating Task Competence from Recovery Capability in Tool-Using AI Agents},
-  author={Sah, Dolly and Sah, Tanmay and Jain, Harshul and Sah, Tanya},
-  journal={Conference Submission},
-  year={2026}
+  author={Dolly Sah and Tanmay Sah and Harshul Jain and Tanya Sah},
+  journal={arXiv preprint arXiv:2610.05622},
+  year={2026},
+  url={https://arxiv.org/abs/2610.05622}
 }
 ```
 

@@ -26,4 +26,5 @@ preferred-citation:
     - family-names: "Sah"
       given-names: "Tanya"
   year: 2026
-  notes: "Conference Submission / Preprint"
+  journal: "arXiv preprint arXiv:2610.05622"
+  url: "https://arxiv.org/abs/2610.05622"

@@ -498,7 +498,7 @@ def run_analysis():
 
 ### 3. Freeze Gate Attestation
 
-Every raw artifact in `results/contemporary_models/raw/` is declared immutable. The primary RB-3C confirmatory results (`results/rb3c_test_raw.jsonl`) and the NAACL 2027 paper sources remain completely untouched.
+Every raw artifact in `results/contemporary_models/raw/` is declared immutable. The primary RB-3C confirmatory results (`results/rb3c_test_raw.jsonl`) and the paper sources remain completely untouched.
 """
     with open("RB7N7_TEST_EXECUTION_FREEZE.md", "w", encoding="utf-8") as f:
         f.write(freeze_md)
