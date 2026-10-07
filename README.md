@@ -65,7 +65,7 @@ UndoBench introduces **counterfactual paired evaluation**: every workflow is exe
 * **Rigorous Safety Metrics**:
   * **Control Pass Rate ($D/N$)**: Baseline planning competence.
   * **Unconditional RSR ($R/N$)**: Task completion under fault injection.
-  * **Conditional Recovery Success Rate (CRSR = $C/D$)**: Recovery success conditioned strictly on nominal competence.
+  * **Conditional Recovery Success Rate (CRSR = $R/D$)**: Recovery success among trials that succeed under nominal CONTROL ($\text{CRSR} = \frac{\sum C_i F_i}{\sum C_i}$).
   * **Exactly-Once Semantic Effect Rate (EOR)**: Task completion where the intended semantic effect occurs exactly once, satisfying all goal invariants with zero duplicate or missing semantic effects.
   * **Duplicate Effect Rate (DER)**: Rate of hazardous duplicate mutations (e.g. double wire transfers, duplicate tags).
   * **Missing Effect Rate (MER)**: Rate of abandoned or uncommitted workflow goals.
@@ -81,7 +81,7 @@ UndoBench provides unified, pluggable baseline wrappers for evaluating diverse r
 * **Idempotency Keys ($B_2$)**: End-to-end idempotency key propagation across external calls.
 * **Sagas ($B_3$)**: Compensating backward transactions upon unhandled failures.
 * **LangGraph Native ($B_4$)**: Production state graph retry policies with memory savers.
-* **EvoUndo ($B_5$)**: Journaling reconciler with pre-state witnesses and post-condition probing (evaluated as one baseline among others).
+* **EvoUndo ($B_5$)**: UndoBench integration of EvoUndo-style local mutation journaling and failure reconciliation, evaluated under the same zero-privilege interface as the other recovery methods.
 * **Verify-Before-Retry ($B_6$)**: Zero-privilege post-commit containment via non-mutating active probes or cautious abstention.
 
 ---
